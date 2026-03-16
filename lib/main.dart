@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    debugPrint("File .env tidak ditemukan");
+  }
 
   await Supabase.initialize(
     url: 'https://salhxszhlxekwbsjhxzw.supabase.co',
@@ -22,11 +29,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Feragown',
+
       theme: ThemeData(
-        primaryColor: const Color(0xFFB76E79),
-        fontFamily: 'Poppins',
+        useMaterial3: true,
+        brightness: Brightness.light,
+        colorSchemeSeed: const Color(0xFFE75480),
       ),
+
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        colorSchemeSeed: const Color(0xFFE75480),
+      ),
+      themeMode: ThemeMode.system,
       home: const HomePage(),
     );
   }

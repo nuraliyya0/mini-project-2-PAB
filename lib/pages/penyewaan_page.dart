@@ -27,7 +27,7 @@ class RentalListPage extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 15),
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 10, 10, 10),
                       borderRadius: BorderRadius.circular(25),
                       boxShadow: [
                         BoxShadow(
